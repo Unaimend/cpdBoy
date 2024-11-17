@@ -9,7 +9,7 @@ import (
 
 // Define a structure for the data you will work with
 type Message struct {
-	Text string `json:"text"`
+	Text string 
 }
 
 type DataBaseHandler struct {
@@ -19,7 +19,7 @@ type DataBaseHandler struct {
 // Handler for the /message endpoint (POST request)
 func (h *DataBaseHandler) PostMessage(w http.ResponseWriter, r *http.Request) {
 	// Set response header to JSON
-	w.Header().Set("Content-Type", "application/json")
+	w.Header().Set("Content-Type", "text/csv")
 	w.WriteHeader(http.StatusOK)
 
 	var msg Message
@@ -35,10 +35,7 @@ func (h *DataBaseHandler) PostMessage(w http.ResponseWriter, r *http.Request) {
   cell := row[0]["name"]
 
 	// Respond with the received message
-	response := Message{Text: fmt.Sprintf("Reurning: %s", cell)}
+	fmt.Fprintf(w, "%s,%s\n", msg.Text, cell)
 
-	if err := json.NewEncoder(w).Encode(response); err != nil {
-		http.Error(w, err.Error(), http.StatusInternalServerError)
-	}
 }
 

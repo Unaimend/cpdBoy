@@ -1,5 +1,8 @@
 package main
 
+// Use this intead of custom tsv handler
+// https://earthly.dev/blog/golang-csv-files/#:~:text=data%20in%20Golang.-,Using%20Encoding%2Fcsv%20To%20Work%20with%20CSV%20Files,read%20and%20write%20CSV%20data.
+
 import (
 	"fmt"
 	"net/http"
