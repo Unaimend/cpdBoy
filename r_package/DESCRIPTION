@@ -1,4 +1,5 @@
-package: cpdBoy
-type: Package
-title: Convert cpds to names - fast and easy
-version: 0.0.1
+Package: cpdBoy
+Type: Package
+Title: Convert cpds to names - fast and easy
+Version: 0.0.1
+RoxygenNote: 7.3.1
