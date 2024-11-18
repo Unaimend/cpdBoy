@@ -29,7 +29,7 @@ func main() {
 	}) 
 
 	// Start the server
-	port := ":8080"
+	port := ":3000"
 	log.Printf("Server is running on http://localhost%s\n", port)
 	if err := http.ListenAndServe(port, nil); err != nil {
 		log.Fatalf("Error starting server: %v", err)

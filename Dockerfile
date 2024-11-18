@@ -14,11 +14,12 @@ COPY . /app
 
 RUN  apt-get install -y curl 
 
+
 # Run any required initialization or dependencies installation (optional)
 RUN go mod tidy
 
 
-EXPOSE 8080
+
 EXPOSE 3000
 
 # Define the default command to run
