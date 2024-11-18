@@ -1,0 +1,4 @@
+package: cpdBoy
+type: Package
+title: Convert cpds to names - fast and easy
+version: 0.0.1
