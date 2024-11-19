@@ -8,12 +8,12 @@
 This will start the server in the background.
 
 ```
-git clone <this repo>
+git clone https://github.com/Unaimend/cpdBoy.git
 cd cpdBoy
 docker compose up --detach
 ```
 
-To test if the server is running an reachable paste
+To test if the server is running and in a reachable state. Paste
 ```
 curl -X POST http://127.0.0.1:3000/message -d '{"text": "cpd00058,cpd00059"}' -H "Content-Type: application/json"
 ```
@@ -29,7 +29,7 @@ cpd00059,L-Ascorbate
 ### Bash script
 To get the bash script run and make sure that `/usr/local/bin is in your $PATH`
 ```
-sudo wget -O ~/usr/local/bin/cpd.sh <this repo>/bash_script/cpd.sh
+sudo wget -O ~/usr/local/bin/cpd.sh https://github.com/Unaimend/cpdBoy/blob/main/bash_script/cpd.sh
 ```
 
 Running the cpd script like this
