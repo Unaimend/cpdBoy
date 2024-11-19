@@ -1,4 +1,5 @@
 #!/bin/bash
+#wget -O ~/scripts/cpd.sh https://example.com/cpd.sh
 
 # Check if there is at least one argument
 if [ $# -eq 0 ]; then
