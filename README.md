@@ -1,4 +1,5 @@
 ## Installation
+I small server + apis for different programming languages to convert cpds into more useful information
 
 ### Prerequisites:
 - Docker
