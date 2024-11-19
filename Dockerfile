@@ -12,12 +12,17 @@ WORKDIR /app
 # Copy the current project files to the container
 COPY . /app
 
-RUN  apt-get install -y curl 
-
+RUN apt-get update && apt-get install -y --no-install-recommends \
+    curl \
+    python3 \
+    python3-pip \
+    sqlite3 && \
+    apt-get clean && rm -rf /var/lib/apt/lists/*
 
 # Run any required initialization or dependencies installation (optional)
 RUN go mod tidy
-
+RUN python3 generate_sqlite.py
+RUN go get github.com/mattn/go-sqlite3
 
 
 EXPOSE 3000
