@@ -1,21 +1,26 @@
+library(httr)
+library(jsonlite)
 # Load the 'httr' library
-#' Does things
+
+#' @param data Either a string, list or data.frame.as.data.frame.
+#' In the case of a data frame it should contain `cpd` either in its colnames or the first row, 
+#' if thats where your headers are.
 #' @export
-d <- function() {
-  library(httr)
-  library(jsonlite)
-  
+cpd <- function(data) {
+
   # Define the API endpoint
   url <- "127.0.0.1:3000/message"
-  
-  # Create a list representing the JSON body
-  json_body <- list(
-    text = "cpd00058"
-  )
-  
+
+  if (typeof(data) == "character") {
+    # Create a list representing the JSON body
+    json_body <- list(
+      text = data
+    )
+  }
+
   # Convert the list to JSON
   json_body <- toJSON(json_body, auto_unbox = TRUE)
-  
+
   # Send the POST request
   response <- POST(
     url, 
@@ -25,5 +30,5 @@ d <- function() {
   )
   
   # Print the response
-  print(content(response, "text"))
+  return(content(response, "text"))
 }
