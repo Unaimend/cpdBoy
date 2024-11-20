@@ -31,21 +31,15 @@ func main() {
 
 
 	// Set up routes
-	http.HandleFunc("/message", func(w http.ResponseWriter, r *http.Request) {
-		myHandler.PostMessage(w, r)
-	}) 
-
-	// Start the server
-	port := ":3000"
-	log.Printf("Server is running on http://localhost%s\n", port)
-	if err := http.ListenAndServe(port, nil); err != nil {
-		log.Fatalf("Error starting server: %v", err)
-	}
-
+  http.HandleFunc("/message", func(w http.ResponseWriter, r *http.Request) {
+  	myHandler.PostMessage(w, r)
+  }) 
   
-
-  
-
-
+  // Start the server
+  port := ":3000"
+  log.Printf("Server is running on http://localhost%s\n", port)
+  if err := http.ListenAndServe(port, nil); err != nil {
+  	log.Fatalf("Error starting server: %v", err)
+  }
 }
 
