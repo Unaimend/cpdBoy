@@ -8,6 +8,6 @@
 
 library(testthat)
 #library(cpdBoy)
-source("R/cpdBoy.R")
-r <- cpdBoy::cpd("cpd00058")
+source("cpdBoy.R")
+r <- cpd(c("cpd00058", "cpd00059"))
 print(r)

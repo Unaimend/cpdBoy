@@ -11,7 +11,7 @@ fi
 CPDS="$*"
 
 # Send the request to the server
-RESPONSE=$(curl -s -X POST http://127.0.0.1:3000/message \
+RESPONSE=$(curl -s -X POST http://49.12.211.202:3000/message \
   -d "{\"text\": \"$CPDS\"}" \
   -H "Content-Type: application/json")
 

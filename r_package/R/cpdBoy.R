@@ -7,15 +7,23 @@ library(jsonlite)
 #' if thats where your headers are.
 #' @export
 cpd <- function(data) {
-
   # Define the API endpoint
   url <- "127.0.0.1:3000/message"
-
+  print(typeof(data))
   if (typeof(data) == "character") {
     # Create a list representing the JSON body
     json_body <- list(
       text = data
     )
+  }
+
+  if (is.vector(data)) {
+    # Create a list representing the JSON body
+    str <- paste(data, collapse = ",")
+    json_body <- list(
+      text = str
+    )
+
   }
 
   # Convert the list to JSON
@@ -29,6 +37,10 @@ cpd <- function(data) {
     add_headers("Content-Type" = "application/json")
   )
   
+  if (is.vector(data)) {
+    df <- read.csv(textConnection(content(response, "text")), header = FALSE)
+    colnames(df) <- c("id", "name")
+  }
   # Print the response
-  return(content(response, "text"))
+  return(df)
 }

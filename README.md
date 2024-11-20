@@ -1,3 +1,5 @@
+You can self-host the server on your own machine. For that you have to change the ip addresses in the r-scrip and bash file.
+
 ## Installation
 I small server + apis for different programming languages to convert cpds into more useful information
 
@@ -17,7 +19,7 @@ docker compose up --detach
 
 To test if the server is running and in a reachable state. Paste
 ```
-curl -X POST http://127.0.0.1:3000/message -d '{"text": "cpd00058,cpd00059"}' -H "Content-Type: application/json"
+curl -X POST http://49.12.211.202:3000/message -d '{"text": "cpd00058,cpd00059"}' -H "Content-Type: application/json"
 ```
 into your terminal. It should return
 ```
