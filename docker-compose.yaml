@@ -2,5 +2,5 @@ name: cpd
 services:
     cpd-boy:
         ports:
-            - 127.0.0.1:3000:3000
+            - 3000:3000
         image: cpd-boy
