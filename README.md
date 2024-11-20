@@ -11,6 +11,7 @@ This will start the server in the background.
 ```
 git clone https://github.com/Unaimend/cpdBoy.git
 cd cpdBoy
+docker build -t cpd-boy .
 docker compose up --detach
 ```
 
