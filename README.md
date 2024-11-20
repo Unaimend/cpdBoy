@@ -41,3 +41,10 @@ Running the cpd script like this
 cpd cpd00058,cpd00059
 ```
 should again give you the same return as the curl command above
+
+## Development
+
+### Run tests
+To execute the tests run 
+
+`go tests ./...` 
