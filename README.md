@@ -1,7 +1,7 @@
 You can self-host the server on your own machine. For that you have to change the ip addresses in the r-scrip and bash file.
 
 ## Installation
-I small server + apis for different programming languages to convert cpds into more useful information
+A small server + apis for different programming languages to convert cpds into more useful information
 
 ### Prerequisites:
 - Docker
