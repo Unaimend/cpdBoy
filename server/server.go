@@ -7,6 +7,7 @@ import (
   "encoding/json"
   "fmt"
   "log"
+  "log/slog"
   "strings"
 )
 
@@ -36,14 +37,14 @@ func (h *DataBaseHandler) PostMessage(w http.ResponseWriter, r *http.Request) {
 
 	// Decode incoming JSON data
 	if err := json.NewDecoder(r.Body).Decode(&msg); err != nil {
-		log.Print("Failed to decode json: ", err)
+		slog.Error("Failed to decode json: ", err)
 		http.Error(w, err.Error(), http.StatusBadRequest)
 		return
 	}
 
    //TODO HANDLE multiple cpds
   query := fmt.Sprintf(`SELECT name FROM data WHERE id in (%s)`, QuoteAndJoin(msg.Text))
-	log.Print("query: ", query)
+	slog.Info("query: ", query)
    
   // TODO HANDLE MULTIPLE RESULTS
 	// Execute the query
