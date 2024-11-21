@@ -1,0 +1,11 @@
+version: '3.8'
+services:
+  fluentd:
+    user: root
+    image: my-fluentd
+    container_name: my-fluentd-compose
+    ports:
+      - "24224:24224"  # For Fluentd Forwarding
+    volumes:
+      - ../docker_logs/:/fluentd/log     
+    command: ["fluentd"]
