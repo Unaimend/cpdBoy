@@ -33,8 +33,8 @@ cpd00059,L-Ascorbate
 ### Bash script
 To get the bash script run and make sure that `/usr/local/bin is in your $PATH`
 ```
-sudo wget -O ~/usr/local/bin/cpd.sh https://github.com/Unaimend/cpdBoy/blob/main/bash_script/cpd.sh
-```
+sudo wget -O ~/usr/local/bin/cpd https://github.com/Unaimend/cpdBoy/blob/main/bash_script/cpd.sh && chmod +x  ~/usr/local/bin/cpd
+``` 
 
 Running the cpd script like this
 ```
