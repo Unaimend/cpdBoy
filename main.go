@@ -27,7 +27,7 @@ func main() {
 
   //Init db and slog
   myHandler := &server.DataBaseHandler {}
-  logger := slog.New(slog.NewJSONHandler(logFile, nil))
+  logger := slog.New(slog.NewJSONHandler(os.Stdout, nil))
   slog.LogAttrs(context.Background(), slog.LevelInfo, "Starting the server")
   slog.SetDefault(logger)
   db, err := sql.Open("sqlite3", "./my_database.db")
