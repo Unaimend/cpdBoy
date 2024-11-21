@@ -27,6 +27,7 @@ RUN go get github.com/mattn/go-sqlite3
 
 EXPOSE 3000
 
+RUN mkdir logs
 # Define the default command to run
 CMD ["go", "run", "main.go"]
 

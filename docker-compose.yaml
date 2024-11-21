@@ -4,3 +4,5 @@ services:
         ports:
             - 3000:3000
         image: cpd-boy
+        volumes:
+          - ./docker_logs:/app/logs

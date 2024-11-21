@@ -19,7 +19,7 @@ import (
 func main() {
 
   // Creating log file
-  logFile, err := os.OpenFile("app.log", os.O_CREATE|os.O_APPEND|os.O_WRONLY, 0666)
+  logFile, err := os.OpenFile("logs/app.log", os.O_CREATE|os.O_APPEND|os.O_WRONLY, 0666)
   if err != nil {
       log.Fatal(err)
   }
@@ -27,7 +27,7 @@ func main() {
 
   //Init db and slog
   myHandler := &server.DataBaseHandler {}
-  logger := slog.New(slog.NewJSONHandler(os.Stdout, nil))
+  logger := slog.New(slog.NewJSONHandler(logFile, nil))
   slog.LogAttrs(context.Background(), slog.LevelInfo, "Starting the server")
   slog.SetDefault(logger)
   db, err := sql.Open("sqlite3", "./my_database.db")

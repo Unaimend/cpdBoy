@@ -44,7 +44,7 @@ func (h *DataBaseHandler) PostMessage(w http.ResponseWriter, r *http.Request) {
 
    //TODO HANDLE multiple cpds
   query := fmt.Sprintf(`SELECT name FROM data WHERE id in (%s)`, QuoteAndJoin(msg.Text))
-	slog.Info("query: ", query)
+	slog.Info(query)
    
   // TODO HANDLE MULTIPLE RESULTS
 	// Execute the query
