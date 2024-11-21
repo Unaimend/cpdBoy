@@ -1,6 +1,6 @@
 version: '3'
 services:
-  cpd-boy:
+  cpd-boy-compose:
     build: .
     ports:
       - "3000:3000"
