@@ -1,8 +1,8 @@
-name: cpd
+version: '3'
 services:
-    cpd-boy:
-        ports:
-            - 3000:3000
-        image: cpd-boy
-        volumes:
-          - ./docker_logs:/app/logs
+  cpd-boy:
+    build: .
+    ports:
+      - "3000:3000"
+    volumes:
+      - "./docker_logs:/app/logs"
