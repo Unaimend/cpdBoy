@@ -9,6 +9,7 @@ import (
   "log"
   "log/slog"
   "strings"
+	"regexp"
 )
 
 type Message struct {
@@ -22,7 +23,7 @@ type DataBaseHandler struct {
 func QuoteAndJoin(input string) string {
 	parts := strings.Split(input, ",")
 	for i, part := range parts {
-		parts[i] = fmt.Sprintf("\"%s\"", part)
+		parts[i] = fmt.Sprintf("'%s'", part)
 	}
 	return strings.Join(parts, ",")
 }
@@ -42,15 +43,22 @@ func (h *DataBaseHandler) PostMessage(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 
-   //TODO HANDLE multiple cpds
-  query := fmt.Sprintf(`SELECT name FROM data WHERE id in (%s)`, QuoteAndJoin(msg.Text))
+  query_arg := msg.Text
+  query := fmt.Sprintf(`SELECT name FROM data WHERE id in (%s)`, QuoteAndJoin(query_arg))
 	slog.Info(query)
+
+
+	regex := regexp.MustCompile(`^((cpd\d+)(,)?)+$`)
+  if regex.MatchString(query_arg) {
+   } else {
+    fmt.Fprintf(w, "One of the cpds did not have the correct for  \n")
+    return
+   }
    
-  // TODO HANDLE MULTIPLE RESULTS
-	// Execute the query
+
 	rows, err := h.Db.Query(query)
 	if err != nil {
-		log.Fatal("Failed to execute query:", err)
+		slog.Error("Failed to execute query:", err)
 	}
 	defer rows.Close()
   var result string
@@ -63,7 +71,7 @@ func (h *DataBaseHandler) PostMessage(w http.ResponseWriter, r *http.Request) {
 	  // Scan the row into variables
 	  err = rows.Scan(&name)
 	  if err != nil {
-	  	log.Fatal("Failed to scan row:", err)
+	  	slog.Error("Failed to scan row:", err)
 	  }
     result += fmt.Sprintf("%s,%s\n", parts[i], name)
     i += 1
